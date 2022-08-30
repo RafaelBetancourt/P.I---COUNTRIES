@@ -1,0 +1,91 @@
+.nav{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    border-bottom: white 2px solid;
+   
+ 
+}
+.searchCreateLine{
+    display: flex;
+    flex-direction: row;
+   
+}
+.navSearchLine{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    margin: 0px 10px 5px 10px;
+    justify-content: space-between;
+}
+
+.filterOptions{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 10px;
+    border-top: white 1px solid;
+}
+
+.homeLink {
+    
+    
+    text-decoration: none;
+    color: aliceblue;
+    border: white 1px solid;
+    padding: 4px 20px 5px 20px;
+
+}
+
+.createLink{
+    text-decoration: none;
+    color: aliceblue;
+    border: white 1px solid;
+    padding: 4px 20px 5px 20px;
+}
+
+.searchCountry{
+    border: white 1px solid;
+    padding: 5px 20px 5px 20px;
+}
+
+.btnSearch {
+    border: white 1px solid;
+    padding: 5px 20px 5px 20px;
+}
+
+.btnReset {
+    border: white 1px solid;
+    padding: 5px 20px 5px 20px;
+    margin-left: 1px;
+}
+
+.continentSelector{
+    border: white 1px solid;
+    padding: 5px 20px 5px 20px;
+}
+.alphabetSelector{
+    border: white 1px solid;
+    padding: 5px 20px 5px 20px;
+}
+.populationSelector{
+    border: rgb(255, 255, 255) 1px solid;
+    padding: 5px 20px 5px 20px;
+}
+
+.turisticSelector{
+    border: rgb(255, 255, 255) 1px solid;
+    padding: 5px 20px 5px 20px;
+}
+
+.clearFilterButtons{
+    color:rgb(255, 255, 255);
+    background-color:rgb(28, 28, 46);
+    border: rgb(255, 255, 255) 1px solid;
+    padding: 5px 20px 5px 20px;
+}
+

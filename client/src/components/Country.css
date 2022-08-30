@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(28, 28, 46);
+}
+
+.out {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    color: rgb(1, 4, 7);
+    width: 300px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    border-radius: 8px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    width: 200px;
+    margin-left: 10px;
+}
+
+.flaggy {
+    border-radius: 8px;
+}

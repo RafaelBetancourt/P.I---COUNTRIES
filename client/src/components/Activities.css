@@ -1,0 +1,99 @@
+/* textActivity {
+    color: antiquewhite;
+} */
+
+.activities {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.activityContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.createdSquare {
+    display: flex;
+    flex-direction: column;
+    color: rgb(255, 255, 255);
+    border: rgb(255, 255, 255) 2px solid;
+    margin: 10px 10px 10px 10px;
+    width: 80vw;
+}
+
+.selectedCountries {
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.labelCreated {
+    margin: 20px 30px 20px 30px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.numCountriesCondition{
+    color: rgb(236, 0, 0);
+    text-align: center;
+}
+
+.numCharactersCondition{
+    color: rgb(236, 0, 0);
+    text-align: center;
+}
+
+.formsquare {
+    border: rgb(255, 255, 255) 2px solid;
+    margin: 10px 10px 10px 10px;
+    width: 30vw;
+}
+
+th {
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.tdDiffic, .tdDurat, .tdSeas, .tdCount {
+    text-align: center;
+}
+
+.formDiv {
+    display: flex;
+    flex-direction: column;
+    /* height: 70vh; */
+    width: 30vw;
+}
+
+.selectCountry {
+    margin: 20px 30px 30px 30px;
+}
+
+.inputActivity {
+    margin: 30px 30px 30px 30px;
+}
+
+.selectDifficulty {
+    margin: 30px 30px 30px 30px;
+}
+
+.selectHours {
+    margin: 30px 30px 30px 30px;
+}
+
+.selectSeason {
+    margin: 30px 30px 30px 30px;
+}
+
+.saveButton {
+    margin: 5px 200px 5px 200px;
+
+}
+
+.labelActivity {
+    margin: 20px 30px 20px 30px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
