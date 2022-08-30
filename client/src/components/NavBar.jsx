@@ -54,9 +54,8 @@ export default function Navbar() {
             <div className='searchCreateLine'>
               <input onChange={onChange} value={search} type='search' placeholder='type a country' className='searchCountry'></input>
               <button onClick={onClick} className='btnSearch'>Search</button>
-              <button onClick={onReset} className='btnReset'>Reset</button> {/* Ya no me sirve este boton */}
+              <button onClick={onReset} className='btnReset'>Reset</button> 
             </div>
-
             <div>
               <Link to={`/countries`} className='homeLink'>
                 Home
@@ -93,7 +92,6 @@ export default function Navbar() {
               <option value='Summer'>Summer</option>
               <option value='Fall'>Fall</option>
               <option value='Spring'>Spring</option>
-
             </select>
             <button onClick={onReset} className='clearFilterButtons'>Clear filters</button>
           </div>

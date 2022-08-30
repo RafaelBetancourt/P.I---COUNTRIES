@@ -35,13 +35,9 @@
     text-align: center;
 }
 
-.numCountriesCondition{
-    color: rgb(236, 0, 0);
-    text-align: center;
-}
-
-.numCharactersCondition{
-    color: rgb(236, 0, 0);
+.numCountriesCondition,
+.numCharactersCondition {
+    color: rgb(255, 0, 0);
     text-align: center;
 }
 
@@ -55,8 +51,18 @@ th {
     border: 1px solid rgb(255, 255, 255);
 }
 
-.tdDiffic, .tdDurat, .tdSeas, .tdCount {
+.tdDiffic,
+.tdDurat,
+.tdSeas,
+.tdCount,
+.tdDeleteButton {
     text-align: center;
+}
+
+.dltButton {
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 0, 0);
+    border-radius: 2px;
 }
 
 .formDiv {
@@ -70,18 +76,9 @@ th {
     margin: 20px 30px 30px 30px;
 }
 
-.inputActivity {
-    margin: 30px 30px 30px 30px;
-}
-
-.selectDifficulty {
-    margin: 30px 30px 30px 30px;
-}
-
-.selectHours {
-    margin: 30px 30px 30px 30px;
-}
-
+.inputActivity,
+.selectDifficulty,
+.selectHours,
 .selectSeason {
     margin: 30px 30px 30px 30px;
 }
@@ -96,4 +93,3 @@ th {
     color: rgb(255, 255, 255);
     text-align: center;
 }
-

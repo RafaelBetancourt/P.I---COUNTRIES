@@ -2,7 +2,7 @@ import React from 'react';
 import './Paginate.css';
 
 export default function Paginate({ currentPage, setCurrentPage, totalCountries, countriesPerPage }) {
-    const totalPages = Math.ceil(totalCountries / countriesPerPage);
+    const totalPages = Math.ceil((totalCountries - 9) / countriesPerPage) + 1;
 
     let pages = [];
 

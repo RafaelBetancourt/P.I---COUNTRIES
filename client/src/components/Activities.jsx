@@ -59,10 +59,10 @@ export default function Activity(props) {
           country: input.country.concat(e.target.value) // Sintaxis ES6 para actualizar la key correspondiente
         });
       }
-    } else if (input.name.length > 30 && e.target.value.length > 30){
+    } else if (input.name.length > 40 && e.target.value.length > 40){
       setError({
         ...error,
-        errorDesc: 'only 30 characters allowed'
+        errorDesc: 'only 40 characters allowed'
       })
     }else{
       setInput({
@@ -76,9 +76,9 @@ export default function Activity(props) {
     }
   }
 
-  const validate = function () {
+  const validate = function () { //<-- button validation
 
-    if (input.name.length > 30 || 
+    if (input.name.length > 40 || 
         input.name === initialValues.name || 
         input.duration === initialValues.duration || 
         input.difficulty === initialValues.difficulty || 
@@ -89,7 +89,6 @@ export default function Activity(props) {
       return false
     }
   }
-
 
   return (
     <div className='activityContainer'>
@@ -147,6 +146,7 @@ export default function Activity(props) {
             <th>duration</th>
             <th>season</th>
             <th>countries</th>
+            <th>Delete</th>
           </tr>
           
           {activities.map(a => (
@@ -156,6 +156,7 @@ export default function Activity(props) {
                 <td className='tdDurat'>{a.duration + 'h'}</td> 
                 <td className='tdSeas'>{a.season}</td> 
                 <td className='tdCount'>{a.countries.map(e => e.id + ' ')}</td>
+                <td className='tdDeleteButton'><button className='dltButton'>x</button></td>
               </tr>
           ))}
         </table>  

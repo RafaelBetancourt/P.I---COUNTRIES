@@ -20,23 +20,34 @@ export default function Countries() {
 
     let totalCountries = 0;
     let countriesPerPage = 10;
+    let initialPage = 9;
+    let flagCounts = 0; 
+    let indexOfLastCountry = 0;
+    let indexOfFirstCountry = 0;
 
     if (filter.length > 0) {
         totalCountries = filter.length;
     } else if (search.length > 0) {
         totalCountries = search.length;
-
     } else if (countries.length > 0) {
         totalCountries = countries.length;
     }
 
-    const indexOfLastCountry = currentPage * countriesPerPage;
-    const indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+    if (currentPage === 1) {
+        indexOfLastCountry = (currentPage * initialPage);
+        indexOfFirstCountry = indexOfLastCountry - initialPage;
+    } else {
+        flagCounts = countriesPerPage - initialPage; //1
+        indexOfLastCountry = (currentPage * countriesPerPage) - flagCounts;
+        indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
+    }
+
+    //let indexOfLastCountry = (currentPage * countriesPerPage) - flagCounts; //iLC = 1 * 9(1st page), 20(2nd page)
+    //let indexOfFirstCountry = indexOfLastCountry - countriesPerPage; 
 
     const filterCountries = countries.slice(indexOfFirstCountry, indexOfLastCountry);
     const filterSearch = search.slice(indexOfFirstCountry, indexOfLastCountry);
     const filterFilters = filter.slice(indexOfFirstCountry, indexOfLastCountry);
-
 
     useEffect(() => {
         dispatch(getCountries())
@@ -45,7 +56,7 @@ export default function Countries() {
             dispatch(resetSearch())
         }
     }, [])
-    //dispatch
+    
     return (
         <>
             <div>
