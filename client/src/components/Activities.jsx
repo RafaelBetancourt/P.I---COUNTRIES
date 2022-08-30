@@ -26,15 +26,21 @@ export default function Activity(props) {
   const dispatch = useDispatch();
 
   const postActivities = function (e) { //<--- create the activity
-   
+
     e.preventDefault()
     //console.log(input);
-    dispatch(postActivity(input));
+    const onlyLetters = /[^a-zA-Z\s]/g;
+    if (!onlyLetters.test(input.name)) {
+      dispatch(postActivity(input));
 
-    setInput(initialValues);
-    alert("the activity was created")
-    dispatch(getActivities())
-};
+      setInput(initialValues);
+      alert("Activity created succesfully!")
+      dispatch(getActivities())
+    } else {
+      return alert("Only letters allowed!");
+      //setInput(initialValues);
+    }
+  };
 
   useEffect(() => {   //<-- allows me to make secondary effects (activities, countries)
     if (countries.length === 0) { //verify if it has something, if so, don't re-render
@@ -59,12 +65,12 @@ export default function Activity(props) {
           country: input.country.concat(e.target.value) // Sintaxis ES6 para actualizar la key correspondiente
         });
       }
-    } else if (input.name.length > 40 && e.target.value.length > 40){
+    } else if (input.name.length > 40 && e.target.value.length > 40) {
       setError({
         ...error,
         errorDesc: 'only 40 characters allowed'
       })
-    }else{
+    } else {
       setInput({
         ...input,
         [e.target.name]: e.target.value,
@@ -78,12 +84,12 @@ export default function Activity(props) {
 
   const validate = function () { //<-- button validation
 
-    if (input.name.length > 40 || 
-        input.name === initialValues.name || 
-        input.duration === initialValues.duration || 
-        input.difficulty === initialValues.difficulty || 
-        input.season === initialValues.season || 
-        input.country === initialValues.country) {
+    if (input.name.length > 40 ||
+      input.name === initialValues.name ||
+      input.duration === initialValues.duration ||
+      input.difficulty === initialValues.difficulty ||
+      input.season === initialValues.season ||
+      input.country === initialValues.country) {
       return true
     } else {
       return false
@@ -98,16 +104,16 @@ export default function Activity(props) {
 
           <select className='selectCountry' value='Select a country' name='country' onChange={handleInputChange}>
             <option hidden>Select a country</option>
-              {countries?.filter(e => !input.country.includes(e.id)).map(e => (
+            {countries?.filter(e => !input.country.includes(e.id)).map(e => (
               <option value={e.id}>{e.name}</option>
-              ))}
+            ))}
           </select>
 
           <label className='numCountriesCondition'>{error.country.length > 0 && error.country}</label>
           <label className='selectedCountries'>{input.country.join(' ')}</label>
 
           <input placeholder='Type an activity' value={input.name} className='inputActivity' name='name' onChange={handleInputChange} />
-          <label className='numCharactersCondition'>{error.errorDesc.length > 0 && error.errorDesc}</label> 
+          <label className='numCharactersCondition'>{error.errorDesc.length > 0 && error.errorDesc}</label>
 
           <select className='selectDifficulty' value={input.difficulty} name='difficulty' onChange={handleInputChange}>
             <option hidden>Select a difficulty</option>
@@ -138,8 +144,8 @@ export default function Activity(props) {
 
       <div className='createdSquare'>
         <label className='labelCreated'>Activities Created</label>
-     
-        <table className='ActivityDescription'>       
+
+        <table className='ActivityDescription'>
           <tr className='trBox'>
             <th>activity</th>
             <th>difficulty</th>
@@ -148,18 +154,18 @@ export default function Activity(props) {
             <th>countries</th>
             <th>Delete</th>
           </tr>
-          
+
           {activities.map(a => (
-              <tr className='detailDescription'>
-                <td>{a.name}</td> 
-                <td className='tdDiffic'>{a.difficulty}</td> 
-                <td className='tdDurat'>{a.duration + 'h'}</td> 
-                <td className='tdSeas'>{a.season}</td> 
-                <td className='tdCount'>{a.countries.map(e => e.id + ' ')}</td>
-                <td className='tdDeleteButton'><button className='dltButton'>x</button></td>
-              </tr>
+            <tr className='detailDescription'>
+              <td>{a.name}</td>
+              <td className='tdDiffic'>{a.difficulty}</td>
+              <td className='tdDurat'>{a.duration + 'h'}</td>
+              <td className='tdSeas'>{a.season}</td>
+              <td className='tdCount'>{a.countries.map(e => e.id + ' ')}</td>
+              <td className='tdDeleteButton'><button className='dltButton'>x</button></td>
+            </tr>
           ))}
-        </table>  
+        </table>
       </div>
     </div>
   )
