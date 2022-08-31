@@ -54,15 +54,8 @@ th {
 .tdDiffic,
 .tdDurat,
 .tdSeas,
-.tdCount,
-.tdDeleteButton {
+.tdCount {
     text-align: center;
-}
-
-.dltButton {
-    color: rgb(255, 255, 255);
-    background-color: rgb(255, 0, 0);
-    border-radius: 2px;
 }
 
 .formDiv {

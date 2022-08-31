@@ -152,9 +152,8 @@ export default function Activity(props) {
             <th>duration</th>
             <th>season</th>
             <th>countries</th>
-            <th>Delete</th>
+            
           </tr>
-
           {activities.map(a => (
             <tr className='detailDescription'>
               <td>{a.name}</td>
@@ -162,7 +161,6 @@ export default function Activity(props) {
               <td className='tdDurat'>{a.duration + 'h'}</td>
               <td className='tdSeas'>{a.season}</td>
               <td className='tdCount'>{a.countries.map(e => e.id + ' ')}</td>
-              <td className='tdDeleteButton'><button className='dltButton'>x</button></td>
             </tr>
           ))}
         </table>
