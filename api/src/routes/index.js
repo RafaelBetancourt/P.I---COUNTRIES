@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const { Country, Activity } = require('../db');
-const axios = require('axios');
 const { Op } = require('sequelize');
 
 
@@ -77,9 +76,20 @@ router.get('/activities', async function (req, res) {
 router.post('/countries/activities', async function (req, res) {
 
     let { name, difficulty, duration, season, country } = req.body;
-    console.log(req.body);
+    //console.log(req.body);
+    
+    // const activityFound = await Activity.findAndCountAll({
+    //     where: {
+    //         name: {
+    //             [Op.eq]: name
+    //         }
+    //     }
+    // })
+    
     try {
-       
+        // if (activityFound === 0) {
+            
+        // }
         let activityCreated = await Activity.create({
             name,
             difficulty,

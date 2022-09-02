@@ -29,6 +29,8 @@ export default function Countries() {
         totalCountries = filter.length;
     } else if (search.length > 0) {
         totalCountries = search.length;
+        
+    
     } else if (countries.length > 0) {
         totalCountries = countries.length;
     }
@@ -41,7 +43,7 @@ export default function Countries() {
         indexOfLastCountry = (currentPage * countriesPerPage) - flagCounts;
         indexOfFirstCountry = indexOfLastCountry - countriesPerPage;
     }
-
+    
     //let indexOfLastCountry = (currentPage * countriesPerPage) - flagCounts; //iLC = 1 * 9(1st page), 20(2nd page)
     //let indexOfFirstCountry = indexOfLastCountry - countriesPerPage; 
 
@@ -56,18 +58,18 @@ export default function Countries() {
             dispatch(resetSearch())
         }
     }, [])
-    
+    //totalCountries > countriesPerPage && ()
     return (
         <>
             <div>
-                {totalCountries > countriesPerPage && (
+                {
                     <Paginate
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                         totalCountries={totalCountries}
                         countriesPerPage={countriesPerPage}
                     />
-                )}
+                }
             </div>
             <div className='container2'>
                 {
@@ -85,8 +87,9 @@ export default function Countries() {
                                 population={population}
                             />
                         )
-                    })
-                        : searchStatus === 'success' ? (<div className='countryNotExist'><p>Country does not exist</p><br></br><p>Please press reset to continue</p></div>) :
+                    }) 
+                 
+                        : searchStatus === 'success' ? (<div className='countryNotExist'><p className='noCountryP'>Country does not exist with that name</p><br></br><p className='noCountryP2'>Please press the Reset button above to continue</p></div>) :
 
                             filter.length > 0 ? filterFilters.map((e) => {
                                 const { id, name, capital, continent, image, subregion, area, population } = e
@@ -103,7 +106,7 @@ export default function Countries() {
                                     />
                                 )
                             })
-                                : filterStatus === 'success' ? (<div className='ActivityNotExist'><p>Activities do not exist in this season</p><br></br><p>Please press reset to continue</p></div>) :
+                                : filterStatus === 'success' ? (<div className='ActivityNotExist'><p className='noActivityP'>Activities do not exist in this season</p><br></br><p className='noActivityP2'>Please press the Reset button above to continue</p></div>) :
                                     filterCountries.map((e) => {
                                         const { id, name, capital, continent, image, subregion, area, population } = e
                                         return (

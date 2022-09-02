@@ -13,7 +13,8 @@
     flex-direction: column;
     align-items: center;
     color: rgb(255, 255, 255);
-    border: rgb(255, 255, 255) 1px solid;
+    border: rgb(255, 255, 255) 2px solid;
+    outline: 3px solid rgb(96, 90, 90);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -25,7 +26,8 @@
     flex-direction: column;
     align-items: center;
     color: rgb(255, 255, 255);
-    border: rgb(255, 255, 255) 1px solid;
+    border: rgb(255, 255, 255) 2px solid;
+    outline: 3px solid rgb(96, 90, 90);
     position: absolute;
     top: 50%;
     left: 50%;
@@ -35,3 +37,14 @@
 p {
     padding: 5px 10px 5px 10px;
 }
+
+.noCountryP, .noActivityP{
+    padding: 0px;
+    margin: 0px;
+}
+
+.noCountryP2, .noActivityP2{
+    padding: 0px;
+    margin: 0px 10px 0px 10px;
+}
+

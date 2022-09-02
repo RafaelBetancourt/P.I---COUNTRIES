@@ -21,30 +21,36 @@ export default function Navbar() {
   }
 
   const dispatch = useDispatch();
+  const location = useLocation();
+  
+  useEffect(() => {
+    if (location.pathname !== 'countries') {
+      setSelect('')
+    }
+  }, [location])
 
   const onClick = () => {
+    dispatch(resetSearch())
     dispatch(getCountryByName(search))
+
     setSearch('')
   }
 
   const onReset = () => {
     dispatch(resetSearch())
-    setSelect('')
+   setSelect('')
   }
 
   const onSelect = (event, filtro) => {
+    dispatch(resetSearch());
     setSelect(event.target.value);
 
     dispatch(filtro(event.target.value))
+
+   setSelect('');
   }
 
-  const location = useLocation();
-  useEffect(() => {
-    if (location.pathname !== 'countries') {
-      setSelect('')
-      
-    }
-  }, [location])
+
 
   return (
     <>
@@ -69,7 +75,7 @@ export default function Navbar() {
           </div>
           <div className='filterOptions'>
             <select className='continentSelector' onChange={(event) => onSelect(event, getCountryByContinent)} value={select}>
-              <option hidden>Select by continent</option>
+              <option hidden>Filter by continent</option>
               <option value='africa'>Africa</option>
               <option value='americas'>Americas</option>
               <option value='asia'>Asia</option>
@@ -77,17 +83,17 @@ export default function Navbar() {
               <option value='oceania'>Oceania</option>
             </select>
             <select className='alphabetSelector' onChange={(event) => onSelect(event, getCountryByOrder)} value={select}>
-              <option hidden>Select by alphabet</option>
+              <option hidden>Order by alphabet</option>
               <option value='ASC'>A - Z</option>
               <option value='DESC'>Z - A</option>
             </select>
             <select className='populationSelector' onChange={(event) => onSelect(event, getCountryByPopulation)} value={select}>
-              <option hidden>Select by population</option>
+              <option hidden>Order by population</option>
               <option value='MIN'>Min-Max</option>
               <option value='MAX'>Max-Min</option>
             </select>
             <select className='turisticSelector' onChange={(event) => onSelect(event, getCountryByActivities)} value={select}>
-              <option hidden>Select by Acivity</option>
+              <option hidden>Filter by Acivity</option>
               <option value='Winter'>Winter</option>
               <option value='Summer'>Summer</option>
               <option value='Fall'>Fall</option>

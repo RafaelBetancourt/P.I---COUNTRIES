@@ -29,18 +29,27 @@ export default function Activity(props) {
 
     e.preventDefault()
     //console.log(input);
-    const onlyLetters = /[^a-zA-Z\s]/g;
+    const onlyLetters = /[^a-zA-Z\s]/g; //<---- Validation
+    if (input.name.length < 4) {
+      return alert('The activity must contain at least 4 letters')
+    } else if (input.name.length > 40) {
+      return alert('The activity must contain less than 40 characters')
+    }
+    if (!input.name.trim()) {
+      return alert('The activity must contain characters')
+    }
     if (!onlyLetters.test(input.name)) {
-      dispatch(postActivity(input));
 
+      dispatch(postActivity(input));
       setInput(initialValues);
       alert("Activity created succesfully!")
       dispatch(getActivities())
     } else {
-      return alert("Only letters allowed!");
+      return alert("Only letters allowed in the activity name!");
       //setInput(initialValues);
     }
   };
+
 
   useEffect(() => {   //<-- allows me to make secondary effects (activities, countries)
     if (countries.length === 0) { //verify if it has something, if so, don't re-render
@@ -49,10 +58,11 @@ export default function Activity(props) {
     if (activities.length === 0) {
       dispatch(getActivities())
     }
-
   }, [dispatch, countries])
 
+
   const handleInputChange = function (e) {  //hanlde the chance to control things
+
     if (e.target.name === 'country') {
       if (input.country.length == 5) {
         setError({
@@ -82,6 +92,10 @@ export default function Activity(props) {
     }
   }
 
+  const clear = function () {
+    setInput(initialValues);
+  }
+
   const validate = function () { //<-- button validation
 
     if (input.name.length > 40 ||
@@ -98,7 +112,7 @@ export default function Activity(props) {
 
   return (
     <div className='activityContainer'>
-      <form className='formsquare' onSubmit={postActivities}>
+      <form className='formsquare' onSubmit={postActivities} onReset={clear}>
         <div className='formDiv'>
           <label className='labelActivity'>Register the activity data</label>
 
@@ -139,6 +153,7 @@ export default function Activity(props) {
             <option value='Spring'>Spring</option>
           </select>
           <button type='submit' className='saveButton' disabled={validate()}>Save</button>
+          <button type='reset' className='clearButton' >Clear</button>
         </div>
       </form>
 
@@ -152,7 +167,7 @@ export default function Activity(props) {
             <th>duration</th>
             <th>season</th>
             <th>countries</th>
-            
+
           </tr>
           {activities.map(a => (
             <tr className='detailDescription'>
@@ -160,7 +175,7 @@ export default function Activity(props) {
               <td className='tdDiffic'>{a.difficulty}</td>
               <td className='tdDurat'>{a.duration + 'h'}</td>
               <td className='tdSeas'>{a.season}</td>
-              <td className='tdCount'>{a.countries.map(e => e.id + ' ')}</td>
+              <td className='tdCount'>{a.countries.map(e => ' | ' + e.id + ' | ')}</td>
             </tr>
           ))}
         </table>

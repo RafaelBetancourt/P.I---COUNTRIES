@@ -2,14 +2,16 @@ import React from 'react';
 import './Paginate.css';
 
 export default function Paginate({ currentPage, setCurrentPage, totalCountries, countriesPerPage }) {
+    
     const totalPages = Math.ceil((totalCountries - 9) / countriesPerPage) + 1;
-
     let pages = [];
-
     for (let p = 1; p <= totalPages; p++) {
         pages.push(p);
     }
-
+    console.log('totalpages' + totalPages + ' currentpage ' + currentPage)
+    if (totalPages < currentPage) {
+        setCurrentPage(1);
+    }
     return (
         <div>
             <ul className="pagination">

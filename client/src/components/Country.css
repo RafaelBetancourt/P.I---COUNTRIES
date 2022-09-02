@@ -18,8 +18,18 @@ h1 {
     font-size: 1.2rem;
     width: 200px;
     margin-left: 10px;
+    
 }
 
 .flaggy {
     border-radius: 8px;
+    
+}
+
+.flaggy:hover {
+    outline: 3px solid rgb(255, 255, 255);
+  }
+
+@media screen and (max-width: 480px){
+    
 }
