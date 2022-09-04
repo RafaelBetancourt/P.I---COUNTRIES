@@ -1,13 +1,9 @@
-
-import { Provider } from "react-redux";
 import { Route, Routes, } from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Countries from "./components/Countries";
 import CountryDetail from "./components/CountryDetail";
 import Activities from "./components/Activities";
 import NavBar from "../src/components/NavBar";
-
-
 
 function App() {
 

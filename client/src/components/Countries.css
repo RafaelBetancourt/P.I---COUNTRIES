@@ -48,3 +48,9 @@ p {
     margin: 0px 10px 0px 10px;
 }
 
+body {
+    background-image: url('https://www.fireworks-videos.com/wp-content/uploads/2020/02/background_stars-and-sky_2160p.jpg');
+    height: 100%;
+    width: 100vw;
+    
+}

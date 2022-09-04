@@ -22,7 +22,7 @@ export default function Navbar() {
 
   const dispatch = useDispatch();
   const location = useLocation();
-  
+
   useEffect(() => {
     if (location.pathname !== 'countries') {
       setSelect('')
@@ -32,35 +32,37 @@ export default function Navbar() {
   const onClick = () => {
     dispatch(resetSearch())
     dispatch(getCountryByName(search))
-
     setSearch('')
   }
 
   const onReset = () => {
     dispatch(resetSearch())
-   setSelect('')
+    setSelect('')
   }
 
   const onSelect = (event, filtro) => {
     dispatch(resetSearch());
     setSelect(event.target.value);
-
     dispatch(filtro(event.target.value))
-
-   setSelect('');
+    setSelect('')
   }
 
-
-
+  const disable = () => {
+    if (location.pathname !== '/countries') { 
+      return true;
+    }
+    return false;
+  }
+  
   return (
     <>
       <div>
         <nav className='nav'>
           <div className='navSearchLine'>
             <div className='searchCreateLine'>
-              <input onChange={onChange} value={search} type='search' placeholder='type a country' className='searchCountry'></input>
+              <input disabled={disable()} onChange={onChange} value={search} type='search' placeholder='type a country' className='searchCountry'></input>
               <button onClick={onClick} className='btnSearch'>Search</button>
-              <button onClick={onReset} className='btnReset'>Reset</button> 
+              <button onClick={onReset} className='btnReset'>Reset</button>
             </div>
             <div>
               <Link to={`/countries`} className='homeLink'>
@@ -68,13 +70,13 @@ export default function Navbar() {
               </Link>
             </div>
             <div>
-              <Link to={`/countries/activities`} className='createLink'>
+              <Link to={`/countries/activities`} disabled={disable} className='createLink'>
                 Create Activity
               </Link>
             </div>
           </div>
           <div className='filterOptions'>
-            <select className='continentSelector' onChange={(event) => onSelect(event, getCountryByContinent)} value={select}>
+            <select disabled={disable()} className='continentSelector' onChange={(event) => onSelect(event, getCountryByContinent)} value={select}>
               <option hidden>Filter by continent</option>
               <option value='africa'>Africa</option>
               <option value='americas'>Americas</option>
@@ -82,17 +84,17 @@ export default function Navbar() {
               <option value='europe'>Europe</option>
               <option value='oceania'>Oceania</option>
             </select>
-            <select className='alphabetSelector' onChange={(event) => onSelect(event, getCountryByOrder)} value={select}>
+            <select disabled={disable()} className='alphabetSelector' onChange={(event) => onSelect(event, getCountryByOrder)} value={select}>
               <option hidden>Order by alphabet</option>
               <option value='ASC'>A - Z</option>
               <option value='DESC'>Z - A</option>
             </select>
-            <select className='populationSelector' onChange={(event) => onSelect(event, getCountryByPopulation)} value={select}>
+            <select disabled={disable()} className='populationSelector' onChange={(event) => onSelect(event, getCountryByPopulation)} value={select}>
               <option hidden>Order by population</option>
               <option value='MIN'>Min-Max</option>
               <option value='MAX'>Max-Min</option>
             </select>
-            <select className='turisticSelector' onChange={(event) => onSelect(event, getCountryByActivities)} value={select}>
+            <select disabled={disable()} className='turisticSelector' onChange={(event) => onSelect(event, getCountryByActivities)} value={select}>
               <option hidden>Filter by Acivity</option>
               <option value='Winter'>Winter</option>
               <option value='Summer'>Summer</option>

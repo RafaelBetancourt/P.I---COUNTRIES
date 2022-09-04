@@ -1,7 +1,7 @@
 .pagination {
     display: flex;
     list-style: none;
-    border-radius: .25rem;
+    border-radius: .50rem;
     justify-content: center;
 }
 

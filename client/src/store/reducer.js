@@ -8,7 +8,7 @@ import {
   GET_COUNTRY_BY_ORDER,
   GET_COUNTRY_BY_POPULATION,
   POST_ACTIVITY,
-  FILTER_BY_ACTIVITY
+  FILTER_BY_ACTIVITY,
 } from "./actions";
 
 const initialState = {
@@ -19,7 +19,8 @@ const initialState = {
   postActivity: [],
   getFilter: [],
   searchStatus: 'not loaded',
-  filterStatus: 'not loaded'
+  filterStatus: 'not loaded',
+  findActivities: []
 };
 
 
@@ -47,6 +48,7 @@ function rootReducer(state = initialState, action) {
         ...state, search: [], getFilter: [], filterStatus: 'not loaded', searchStatus: 'not loaded'
       }
     case GET_CONTINENT:
+      console.log('reducer getcontinent')
       return state = {
         ...state, getFilter: action.payload, filterStatus: 'success'
       }
@@ -71,7 +73,6 @@ function rootReducer(state = initialState, action) {
       return state = {
         ...state,
         getFilter: filter, filterStatus: 'success'
-
       }
 
     default:

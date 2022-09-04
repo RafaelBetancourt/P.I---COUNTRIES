@@ -54,6 +54,7 @@ export function getCountryByPopulation(popuOrder) {
 }
 
 export function getCountryByContinent(continent) {
+  console.log('actions getcontinents')
   return function (dispatch) {
     return fetch(`http://localhost:3001/countries?continent=${continent}`)
       .then(response => response.json())
@@ -101,3 +102,5 @@ export function getActivities() {
       });
   };
 }
+
+

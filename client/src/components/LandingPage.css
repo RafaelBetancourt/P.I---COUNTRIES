@@ -1,32 +1,29 @@
 .linkToHome {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-    color: rgb(57, 170, 208);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     margin-top: 20px;
-
 }
 
-.toCountries {
-    background-image: url('https://images.pexels.com/photos/6220559/pexels-photo-6220559.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-    background-size: 100vw 100vh;
+.earthCont {
+    width: 100%;
     height: 100vh;
 }
 
-.img {
-    max-width: 100%;
-    max-height: 100%;
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-h2 {
-
-    font-family: 'Poppins', sans-serif;
-    font-size: 80px;
+.landingTitles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    top: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding-top: 60px;
-    margin-top: 0px;
-    color: rgb(57, 170, 208);
+    align-items: center;
+    color: rgb(255, 255, 255);
 }

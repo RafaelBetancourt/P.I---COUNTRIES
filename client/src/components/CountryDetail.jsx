@@ -5,21 +5,17 @@ import { useParams } from 'react-router-dom';
 import './CountryDetail.css';
 
 
-
 export default function CountryDetail() {     
 
   const { idDetail } = useParams();
-
   const dispatch = useDispatch();
   const detail = useSelector(state => state.countryDetail)
 
-  //console.log('Ingresa a la funcion ' + state.detail); 
   useEffect(() => {
-    dispatch(getCountryDetail(idDetail))  //<--- verificar los props
+    dispatch(getCountryDetail(idDetail)) 
   }, [])
 
   return (
-
     <div className='countryDetailContainer'>
       <div className='countryDetails'>
         <label className='countryDetailsLabel'>Country details:</label>
@@ -29,7 +25,7 @@ export default function CountryDetail() {
         <h5>Subregion: {detail.subregion}</h5>
         <h5>Area: {detail.area} Km<sup>2</sup></h5>
         <h5>Population: {detail.population} residents</h5>
-        <img src={detail.image} widht="200px" height="150px" />
+        <img src={detail.image} widht="200px" height="150px" alt='country img'/>
       </div>
 
       <div className='countryActivitySquare'>

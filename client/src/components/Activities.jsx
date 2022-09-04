@@ -8,6 +8,7 @@ export default function Activity(props) {
   const countries = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.getActivities);
 
+
   const initialValues = {
     name: "",
     difficulty: "",
@@ -16,43 +17,47 @@ export default function Activity(props) {
     country: [],
   }
 
+
   let [error, setError] = useState({
     country: '',
     errorDesc: ''
   });
+
 
   let [input, setInput] = useState(initialValues);
 
   const dispatch = useDispatch();
 
   const postActivities = function (e) { //<--- create the activity
-
     e.preventDefault()
     //console.log(input);
-    const onlyLetters = /[^a-zA-Z\s]/g; //<---- Validation
-    if (input.name.length < 4) {
-      return alert('The activity must contain at least 4 letters')
-    } else if (input.name.length > 40) {
-      return alert('The activity must contain less than 40 characters')
+    const onlyLetters = /[^a-zA-Z\s]/g; //<---- Validation        
+    if (!(/^[a-zA-Z]{4,40}$/.test(input.name))) {
+      return alert('Activity description must contain between 4 and 40 Character')
     }
-    if (!input.name.trim()) {
-      return alert('The activity must contain characters')
-    }
-    if (!onlyLetters.test(input.name)) {
 
-      dispatch(postActivity(input));
-      setInput(initialValues);
-      alert("Activity created succesfully!")
-      dispatch(getActivities())
+    if (!onlyLetters.test(input.name)) {
+      const names = activities.map(el => el.name.toUpperCase());
+      if (!names.includes(input.name.toUpperCase())) {
+
+        dispatch(postActivity(input));
+        setInput(initialValues);
+        alert("Activity created succesfully!")
+        dispatch(getActivities())
+      } else {
+        alert('Activity already created')
+      }
     } else {
       return alert("Only letters allowed in the activity name!");
-      //setInput(initialValues);
     }
   };
 
+  // const conditions = function () {     separar las condiciones para manejar mejor los errores en la funcion handleInputChange
 
-  useEffect(() => {   //<-- allows me to make secondary effects (activities, countries)
-    if (countries.length === 0) { //verify if it has something, if so, don't re-render
+  // }
+
+  useEffect(() => {
+    if (countries.length === 0) {
       dispatch(getCountries())
     }
     if (activities.length === 0) {
@@ -61,10 +66,9 @@ export default function Activity(props) {
   }, [dispatch, countries])
 
 
-  const handleInputChange = function (e) {  //hanlde the chance to control things
-
+  const handleInputChange = function (e) {  //hanlde the change to control things
     if (e.target.name === 'country') {
-      if (input.country.length == 5) {
+      if (input.country.length === 5) {
         setError({
           ...error,
           country: 'only 5 countries allowed'
@@ -97,7 +101,6 @@ export default function Activity(props) {
   }
 
   const validate = function () { //<-- button validation
-
     if (input.name.length > 40 ||
       input.name === initialValues.name ||
       input.duration === initialValues.duration ||
@@ -109,6 +112,7 @@ export default function Activity(props) {
       return false
     }
   }
+  
 
   return (
     <div className='activityContainer'>
@@ -130,7 +134,7 @@ export default function Activity(props) {
           <label className='numCharactersCondition'>{error.errorDesc.length > 0 && error.errorDesc}</label>
 
           <select className='selectDifficulty' value={input.difficulty} name='difficulty' onChange={handleInputChange}>
-            <option hidden>Select a difficulty</option>
+            <option hidden >Select a difficulty</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
@@ -167,7 +171,6 @@ export default function Activity(props) {
             <th>duration</th>
             <th>season</th>
             <th>countries</th>
-
           </tr>
           {activities.map(a => (
             <tr className='detailDescription'>

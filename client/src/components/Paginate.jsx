@@ -8,7 +8,6 @@ export default function Paginate({ currentPage, setCurrentPage, totalCountries, 
     for (let p = 1; p <= totalPages; p++) {
         pages.push(p);
     }
-    console.log('totalpages' + totalPages + ' currentpage ' + currentPage)
     if (totalPages < currentPage) {
         setCurrentPage(1);
     }
