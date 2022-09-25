@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+
 import './NavBar.css';
 import {
   getCountryByContinent,
@@ -55,14 +56,15 @@ export default function Navbar() {
   }
   
   return (
+    
     <>
       <div>
         <nav className='nav'>
           <div className='navSearchLine'>
             <div className='searchCreateLine'>
-              <input disabled={disable()} onChange={onChange} value={search} type='search' placeholder='type a country' className='searchCountry'></input>
-              <button onClick={onClick} className='btnSearch'>Search</button>
-              <button onClick={onReset} className='btnReset'>Reset</button>
+              <input disabled={disable()} onChange={onChange} value={search} type='search' placeholder='Escribe un país' className='searchCountry'></input>
+              <button onClick={onClick} className='btnSearch'>Buscar</button>
+              <button onClick={onReset} className='btnReset'>Resetear</button>
             </div>
             <div>
               <Link to={`/countries`} className='homeLink'>
@@ -71,42 +73,43 @@ export default function Navbar() {
             </div>
             <div>
               <Link to={`/countries/activities`} disabled={disable} className='createLink'>
-                Create Activity
+                Crear Actividad
               </Link>
             </div>
           </div>
           <div className='filterOptions'>
             <select disabled={disable()} className='continentSelector' onChange={(event) => onSelect(event, getCountryByContinent)} value={select}>
-              <option hidden>Filter by continent</option>
+              <option hidden>Filtrar por continente</option>
               <option value='africa'>Africa</option>
               <option value='americas'>Americas</option>
               <option value='asia'>Asia</option>
-              <option value='europe'>Europe</option>
+              <option value='europe'>Europa</option>
               <option value='oceania'>Oceania</option>
             </select>
             <select disabled={disable()} className='alphabetSelector' onChange={(event) => onSelect(event, getCountryByOrder)} value={select}>
-              <option hidden>Order by alphabet</option>
+              <option hidden>Ordenar alfabeticamente</option>
               <option value='ASC'>A - Z</option>
               <option value='DESC'>Z - A</option>
             </select>
             <select disabled={disable()} className='populationSelector' onChange={(event) => onSelect(event, getCountryByPopulation)} value={select}>
-              <option hidden>Order by population</option>
+              <option hidden>Ordenar por población</option>
               <option value='MIN'>Min-Max</option>
               <option value='MAX'>Max-Min</option>
             </select>
             <select disabled={disable()} className='turisticSelector' onChange={(event) => onSelect(event, getCountryByActivities)} value={select}>
-              <option hidden>Filter by Acivity</option>
-              <option value='Winter'>Winter</option>
-              <option value='Summer'>Summer</option>
-              <option value='Fall'>Fall</option>
-              <option value='Spring'>Spring</option>
+              <option hidden>Filtrar por temporada</option>
+              <option value='Winter'>Invierno</option>
+              <option value='Summer'>Verano</option>
+              <option value='Fall'>Otoño</option>
+              <option value='Spring'>Primavera</option>
             </select>
-            <button onClick={onReset} className='clearFilterButtons'>Clear filters</button>
+            <button onClick={onReset} className='clearFilterButtons'>Limpiar filtros</button>
           </div>
         </nav>
       </div>
       <Outlet />
     </>
+   
   )
 }
 

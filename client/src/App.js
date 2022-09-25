@@ -8,16 +8,18 @@ import NavBar from "../src/components/NavBar";
 function App() {
 
   return (
-    <> 
-      <Routes>
-        <Route exact path={'/'} element={<LandingPage/>}/>
-        <Route path={'/countries'} element={<NavBar/>}>
-          <Route path={''} element={<Countries/>}/>
-          <Route path={':idDetail'} element={<CountryDetail/>}/>
-          <Route path={'activities'} element={<Activities/>}/>
-        </Route>
-      </Routes>
-    </>
+
+      <>
+        <Routes>
+          <Route exact path={'/'} element={<LandingPage />} />
+          <Route path={'/countries'} element={<NavBar />}>
+            <Route path={''} element={<Countries />} />
+            <Route path={':idDetail'} element={<CountryDetail />} />
+            <Route path={'activities'} element={<Activities />} />
+          </Route>
+        </Routes>
+      </>
+
   );
 }
 

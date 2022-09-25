@@ -7,8 +7,6 @@ export default function Activity(props) {
 
   const countries = useSelector((state) => state.countries);
   const activities = useSelector((state) => state.getActivities);
-
-
   const initialValues = {
     name: "",
     difficulty: "",
@@ -17,12 +15,10 @@ export default function Activity(props) {
     country: [],
   }
 
-
   let [error, setError] = useState({
     country: '',
     errorDesc: ''
   });
-
 
   let [input, setInput] = useState(initialValues);
 
@@ -32,9 +28,9 @@ export default function Activity(props) {
     e.preventDefault()
     //console.log(input);
     const onlyLetters = /[^a-zA-Z\s]/g; //<---- Validation        
-    if (!(/^[a-zA-Z]{4,40}$/.test(input.name))) {
-      return alert('Activity description must contain between 4 and 40 Character')
-    }
+    // if (!(/^[a-zA-Z]$/.test(input.name))) {
+    //   return alert('Activity description must contain only letters')
+    // }
 
     if (!onlyLetters.test(input.name)) {
       const names = activities.map(el => el.name.toUpperCase());
@@ -51,11 +47,8 @@ export default function Activity(props) {
       return alert("Only letters allowed in the activity name!");
     }
   };
-
   // const conditions = function () {     separar las condiciones para manejar mejor los errores en la funcion handleInputChange
-
   // }
-
   useEffect(() => {
     if (countries.length === 0) {
       dispatch(getCountries())
@@ -64,7 +57,6 @@ export default function Activity(props) {
       dispatch(getActivities())
     }
   }, [dispatch, countries])
-
 
   const handleInputChange = function (e) {  //hanlde the change to control things
     if (e.target.name === 'country') {
@@ -118,10 +110,10 @@ export default function Activity(props) {
     <div className='activityContainer'>
       <form className='formsquare' onSubmit={postActivities} onReset={clear}>
         <div className='formDiv'>
-          <label className='labelActivity'>Register the activity data</label>
+          <label className='labelActivity'>Registra los datos de la actividad</label>
 
           <select className='selectCountry' value='Select a country' name='country' onChange={handleInputChange}>
-            <option hidden>Select a country</option>
+            <option hidden>Selecciona un país</option>
             {countries?.filter(e => !input.country.includes(e.id)).map(e => (
               <option value={e.id}>{e.name}</option>
             ))}
@@ -134,7 +126,7 @@ export default function Activity(props) {
           <label className='numCharactersCondition'>{error.errorDesc.length > 0 && error.errorDesc}</label>
 
           <select className='selectDifficulty' value={input.difficulty} name='difficulty' onChange={handleInputChange}>
-            <option hidden >Select a difficulty</option>
+            <option hidden >Selecciona una dificultad</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
@@ -142,35 +134,35 @@ export default function Activity(props) {
             <option value='5'>5</option>
           </select>
           <select className='selectHours' value={input.duration} name='duration' onChange={handleInputChange}>
-            <option hidden>Select duration in hours</option>
-            <option value='1'>1 Hour</option>
-            <option value='2'>2 Hours</option>
-            <option value='3'>3 Hours</option>
-            <option value='4'>4 Hours</option>
-            <option value='5'>5 Hours</option>
+            <option hidden>Selecciona la duración en horas</option>
+            <option value='1'>1 Hora</option>
+            <option value='2'>2 Horas</option>
+            <option value='3'>3 Horas</option>
+            <option value='4'>4 Horas</option>
+            <option value='5'>5 Horas</option>
           </select>
           <select className='selectSeason' value={input.season} name='season' onChange={handleInputChange}>
-            <option hidden>Select a season</option>
-            <option value='Winter'>Winter</option>
-            <option value='Summer'>Summer</option>
-            <option value='Fall'>Fall</option>
-            <option value='Spring'>Spring</option>
+            <option hidden>Selecciona una temporada</option>
+            <option value='Winter'>Invierno</option>
+            <option value='Summer'>Verano</option>
+            <option value='Fall'>Otoño</option>
+            <option value='Spring'>Primavera</option>
           </select>
           <button type='submit' className='saveButton' disabled={validate()}>Save</button>
-          <button type='reset' className='clearButton' >Clear</button>
+          <button type='reset' className='clearButton' >Limpiar</button>
         </div>
       </form>
 
       <div className='createdSquare'>
-        <label className='labelCreated'>Activities Created</label>
+        <label className='labelCreated'>Actividades Creadas</label>
 
         <table className='ActivityDescription'>
           <tr className='trBox'>
-            <th>activity</th>
-            <th>difficulty</th>
-            <th>duration</th>
-            <th>season</th>
-            <th>countries</th>
+            <th>Actividad</th>
+            <th>Dificultad</th>
+            <th>Duración</th>
+            <th>Temporada</th>
+            <th>Paises</th>
           </tr>
           {activities.map(a => (
             <tr className='detailDescription'>
