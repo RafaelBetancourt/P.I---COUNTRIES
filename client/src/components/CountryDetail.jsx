@@ -5,14 +5,14 @@ import { useParams } from 'react-router-dom';
 import './CountryDetail.css';
 
 
-export default function CountryDetail() {     
+export default function CountryDetail() {
 
   const { idDetail } = useParams();
   const dispatch = useDispatch();
   const detail = useSelector(state => state.countryDetail)
 
   useEffect(() => {
-    dispatch(getCountryDetail(idDetail)) 
+    dispatch(getCountryDetail(idDetail))
   }, [])
 
   return (
@@ -25,27 +25,24 @@ export default function CountryDetail() {
         <h5>Subregion: {detail.subregion}</h5>
         <h5>Area: {detail.area} Km<sup>2</sup></h5>
         <h5>Population: {detail.population} residents</h5>
-        <img src={detail.image} widht="200px" height="150px" alt='country img'/>
+        <img src={detail.image} widht="200px" height="150px" alt='country img' />
       </div>
-
       <div className='countryActivitySquare'>
         <label className='countryActivityLabel'>Country Activities</label>
-
-        <table className='ActivityDescription'>          
+        <table className='ActivityDescription'>
           <tr className='trBoxDetail'>
-            <th>activity</th>
-            <th>difficulty</th>
-            <th>duration</th>
-            <th>season</th>
+            <th>Activity</th>
+            <th>Difficulty</th>
+            <th>Duration</th>
+            <th>Season</th>
           </tr>
-          
           {detail.activities?.map(a => (
-              <tr className='detailDescription'>
-                <td>{a.name}</td> 
-                <td className='tdDifficDetail'>{a.difficulty}</td> 
-                <td className='tdDuratDetail'>{a.duration + 'h'}</td> 
-                <td className='tdSeasDetail'>{a.season}</td> 
-              </tr>
+            <tr className='detailDescription'>
+              <td>{a.name}</td>
+              <td className='tdDifficDetail'>{a.difficulty}</td>
+              <td className='tdDuratDetail'>{a.duration + 'h'}</td>
+              <td className='tdSeasDetail'>{a.season}</td>
+            </tr>
           ))}
         </table>
       </div>

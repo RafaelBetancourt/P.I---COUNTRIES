@@ -104,29 +104,25 @@ export default function Activity(props) {
       return false
     }
   }
-  
+
 
   return (
     <div className='activityContainer'>
       <form className='formsquare' onSubmit={postActivities} onReset={clear}>
         <div className='formDiv'>
-          <label className='labelActivity'>Registra los datos de la actividad</label>
-
+          <label className='labelActivity'>Please type the activity data</label>
           <select className='selectCountry' value='Select a country' name='country' onChange={handleInputChange}>
-            <option hidden>Selecciona un país</option>
+            <option hidden>Select a country</option>
             {countries?.filter(e => !input.country.includes(e.id)).map(e => (
               <option value={e.id}>{e.name}</option>
             ))}
           </select>
-
           <label className='numCountriesCondition'>{error.country.length > 0 && error.country}</label>
           <label className='selectedCountries'>{input.country.join(' ')}</label>
-
           <input placeholder='Type an activity' value={input.name} className='inputActivity' name='name' onChange={handleInputChange} />
           <label className='numCharactersCondition'>{error.errorDesc.length > 0 && error.errorDesc}</label>
-
           <select className='selectDifficulty' value={input.difficulty} name='difficulty' onChange={handleInputChange}>
-            <option hidden >Selecciona una dificultad</option>
+            <option hidden >Select a difficulty</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
             <option value='3'>3</option>
@@ -134,7 +130,7 @@ export default function Activity(props) {
             <option value='5'>5</option>
           </select>
           <select className='selectHours' value={input.duration} name='duration' onChange={handleInputChange}>
-            <option hidden>Selecciona la duración en horas</option>
+            <option hidden>Select a duration in hours</option>
             <option value='1'>1 Hora</option>
             <option value='2'>2 Horas</option>
             <option value='3'>3 Horas</option>
@@ -142,27 +138,25 @@ export default function Activity(props) {
             <option value='5'>5 Horas</option>
           </select>
           <select className='selectSeason' value={input.season} name='season' onChange={handleInputChange}>
-            <option hidden>Selecciona una temporada</option>
-            <option value='Winter'>Invierno</option>
-            <option value='Summer'>Verano</option>
-            <option value='Fall'>Otoño</option>
-            <option value='Spring'>Primavera</option>
+            <option hidden>Select a season</option>
+            <option value='Winter'>Winter</option>
+            <option value='Summer'>Summer</option>
+            <option value='Fall'>Fall</option>
+            <option value='Spring'>Spring</option>
           </select>
           <button type='submit' className='saveButton' disabled={validate()}>Save</button>
-          <button type='reset' className='clearButton' >Limpiar</button>
+          <button type='reset' className='clearButton' >Clear</button>
         </div>
       </form>
-
       <div className='createdSquare'>
-        <label className='labelCreated'>Actividades Creadas</label>
-
+        <label className='labelCreated'>Activities booked</label>
         <table className='ActivityDescription'>
           <tr className='trBox'>
-            <th>Actividad</th>
-            <th>Dificultad</th>
-            <th>Duración</th>
-            <th>Temporada</th>
-            <th>Paises</th>
+            <th>Activity</th>
+            <th>Difficulty</th>
+            <th>Duration</th>
+            <th>Season</th>
+            <th>Countries</th>
           </tr>
           {activities.map(a => (
             <tr className='detailDescription'>
