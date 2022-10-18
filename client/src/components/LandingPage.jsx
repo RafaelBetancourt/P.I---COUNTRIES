@@ -13,7 +13,7 @@ export default function LandingPage() {
         <video src={planetEarth} autoPlay loop muted alt='planet earth video' />
         <div className='landingTitles'>
           <h3>Do you like traveling?</h3>
-          <h2>WELCOME TO MY WORLD APP</h2>
+          <h2>WELCOME TO COUNTRYFY</h2>
           <Link to='/countries' className="linkToHome">
             <button className='buttonLanding'><span>Pres <b>HERE</b> to continue</span></button>
           </Link>
